@@ -1,0 +1,43 @@
+.root{--bg:#0b0f14;--panel:#0f1720;--accent:#0ff;--muted:#7b8b94}
+:root{--bg:#0b0f14;--panel:#0f1720;--accent:#0ff;--muted:#7b8b94}
+html,body,#root{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto;background:var(--panel)}
+/* fixed top overlay keeps the visual gradient while the bottom remains solid panel color */
+body{color:#e6f6ff; padding-bottom:22px}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:48vh;background:linear-gradient(180deg,#04050a 0%, rgba(4,5,10,0.45) 40%, transparent 100%);pointer-events:none;z-index:0}
+.app{display:flex;gap:20px;padding:20px;position:relative;z-index:1}
+.panel{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;min-height:60vh;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+.right{width:320px;background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+.left{flex:1}
+.right{width:320px;background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+.bubble{padding:12px 16px;border-radius:18px;max-width:70%;margin:8px 0}
+.bubble.user{background:linear-gradient(90deg,#061024,#032540);align-self:flex-end;color:#9fe}
+.bubble.bot{background:linear-gradient(90deg,#1b1b2f,#0f2140);color:#cfe}
+.chat{display:flex;flex-direction:column}
+.onboard{display:flex;gap:8px;margin-top:12px}
+.onboard input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+.onboard button{padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#6ef);border:none;color:#002}
+.leaderboard{list-style:none;padding:0;margin:12px 0}
+.leaderboard li{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:14px}
+.neon{color:#9ff; text-shadow:0 0 8px rgba(0,255,255,0.12), 0 0 18px rgba(0,255,255,0.08)}
+.option{padding:12px;border-radius:10px;background:linear-gradient(90deg,#071428,#03283a);border:1px solid rgba(0,255,255,0.08);color:#9ff}
+.msg{padding:8px;margin-top:10px;background:#071425;border-radius:8px}
+.dashboard{display:flex;gap:18px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tab{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+.tab.active{background:linear-gradient(90deg, rgba(0,255,255,0.06), rgba(110,200,255,0.03));color:var(--accent);border-color:rgba(0,255,255,0.12)}
+.tab-content{padding-top:6px}
+.sidebar{width:300px}
+.results{width:100%;border-collapse:collapse;margin-top:8px}
+.results th{text-align:left;padding:8px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+.results td{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03)}
+.results tr.highlight td{background:linear-gradient(90deg, rgba(0,255,255,0.03), transparent)}
+.scanner{display:flex;justify-content:center}
+
+/* shared button style */
+.btn{padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#6ef);border:none;color:#002;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+.btn.small{padding:6px 10px;border-radius:6px}
+@media(max-width:1000px){.app{flex-direction:column}.right{width:100%}.sidebar{width:100%}}
+
+/* Header logo */
+.app-logo{height:58px;width:auto;display:block;margin-left:4px;margin-right:8px;filter:none;border-radius:0}

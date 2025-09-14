@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+env/
+.env
+venv/
+venv64/
+ENV/
+env.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# SQLite / local DB files
+*.db
+*.sqlite3
+app.db
+backend/app.db
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Lockfiles (if you prefer to track them remove these lines)
+package-lock.json
+pnpm-lock.yaml
+
+# Docker
+docker-compose.override.yml
+**/Dockerfile*
+docker-compose.*.yml
+docker-compose.*.yaml
+
+# Uploads & runtime artifacts
+uploads/
+backend/uploads/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# macOS / Windows
+.DS_Store
+.Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build artifacts
+build/
+dist/
+
+# Misc
+*.swp
+*.bak
+*.tmp
+
+# Allow specific files if necessary (uncomment and edit)
+# !/frontend/public/box.png

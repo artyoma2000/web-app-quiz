@@ -1,0 +1,10 @@
+{
+  "postgres": {
+    "user": "postgres",
+    "password": "postgres",
+    "host": "db",
+    "port": 5432,
+    "db": "copilot_test"
+  },
+  "create_tables": true
+}
