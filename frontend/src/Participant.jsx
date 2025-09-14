@@ -276,7 +276,7 @@ export default function Participant({onLogout, defaultLang}){
                 <button className="btn small ghost" onClick={()=>{ setScannerActive(false); setTimeout(()=>setScannerActive(true), 300) }}>{t('restart', lang)}</button>
                 <div style={{marginLeft:8,fontSize:12,color: scannerActive ? 'green' : 'var(--muted)'}}>{scannerActive ? t('scanner_status_on', lang) : t('scanner_status_off', lang)}</div>
               </div>
-              <Scanner onScan={onScan} active={scannerActive} />
+              <Scanner onScan={onScan} active={scannerActive} lang={lang} />
             </div>
           )}
 
