@@ -30,8 +30,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_DB=copilot_test
       - CREATE_TABLES=1
-      - SSL_CERT_FILE=/certs/cert.pem
-      - SSL_KEY_FILE=/certs/key.pem
+      # SSL certs intentionally not passed to backend to keep backend HTTP
 
   frontend:
     build:
