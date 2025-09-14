@@ -13,9 +13,19 @@ body::before{content:"";position:fixed;inset:0 0 auto 0;height:48vh;background:l
 .bubble.user{background:linear-gradient(90deg,#061024,#032540);align-self:flex-end;color:#9fe}
 .bubble.bot{background:linear-gradient(90deg,#1b1b2f,#0f2140);color:#cfe}
 .chat{display:flex;flex-direction:column}
-.onboard{display:flex;gap:8px;margin-top:12px}
-.onboard input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
-.onboard button{padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#6ef);border:none;color:#002}
+.onboard{display:flex;gap:8px;margin-top:12px;align-items:center}
+.onboard input{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;min-width:0}
+.onboard button{padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#6ef);border:none;color:#002;flex:0 0 auto}
+
+/* generic controls row that should wrap on small screens */
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* camera select should visually match inputs/buttons and not overflow */
+.camera-select{flex:1;min-width:0;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+.camera-select option{background:var(--panel);color:inherit}
+
+/* ensure buttons don't overflow and text stays readable */
+.btn{white-space:nowrap;min-width:0}
 .leaderboard{list-style:none;padding:0;margin:12px 0}
 .leaderboard li{padding:8px;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:14px}
 .neon{color:#9ff; text-shadow:0 0 8px rgba(0,255,255,0.12), 0 0 18px rgba(0,255,255,0.08)}
@@ -38,6 +48,20 @@ body::before{content:"";position:fixed;inset:0 0 auto 0;height:48vh;background:l
 .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
 .btn.small{padding:6px 10px;border-radius:6px}
 @media(max-width:1000px){.app{flex-direction:column}.right{width:100%}.sidebar{width:100%}}
+
+@media (max-width:600px){
+	.onboard{flex-direction:column;align-items:stretch}
+	/* Ensure inputs and the login button are the same width on small screens */
+	.onboard input, .onboard button{
+		width:100%;
+		max-width:100%;
+		box-sizing:border-box;
+		margin:0;
+		display:block;
+	}
+	/* Inputs should not use flex sizing on small screens to avoid differences */
+	.onboard input{flex:none}
+}
 
 /* Header logo */
 .app-logo{height:58px;width:auto;display:block;margin-left:4px;margin-right:8px;filter:none;border-radius:0}

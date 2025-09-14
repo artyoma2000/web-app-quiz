@@ -146,18 +146,18 @@ export default function Scanner({onScan, active = true, lang=null}){
       <div style={{width:'100%',maxWidth:360}}>
         <div style={{height:12}} />
         <div style={{fontSize:13,color:'var(--muted)',marginBottom:8}}>Scanner status: {status}{error ? ' — '+error : ''}</div>
-        <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
+        <div className="controls" style={{marginBottom:8}}>
           {/* camera selector (if multiple cameras) */}
           {cameras && cameras.length > 1 ? (
-              <select value={selectedCamera||''} onChange={e=>setSelectedCamera(e.target.value)} style={{flex:1,borderRadius:6,padding:6,background:'#071124',color:'#e6eef8',border:'1px solid #1f2937'}}>
-                <option value="">{t('prefer_rear', lang) || t('use_preferred', lang)}</option>
-                {cameras.map(c=> <option key={c.id} value={c.id}>{c.label || c.id}</option> )}
-              </select>
-            ) : (
-              <div style={{flex:1,fontSize:12,color:'var(--muted)'}}>Camera: {cameras && cameras.length ? (cameras[0].label || cameras[0].id) : t('detecting', lang) || 'detecting...'}</div>
-            )}
+            <select className="camera-select" value={selectedCamera||''} onChange={e=>setSelectedCamera(e.target.value)}>
+              <option value="">{t('prefer_rear', lang) || t('use_preferred', lang)}</option>
+              {cameras.map(c=> <option key={c.id} value={c.id}>{c.label || c.id}</option> )}
+            </select>
+          ) : (
+            <div style={{flex:1,fontSize:12,color:'var(--muted)'}}>Camera: {cameras && cameras.length ? (cameras[0].label || cameras[0].id) : t('detecting', lang) || 'detecting...'}</div>
+          )}
           {/* quick toggle to clear selection (back to preferred) */}
-          <button className="btn" onClick={()=>setSelectedCamera(null)} style={{padding:'6px 10px',borderRadius:8,whiteSpace:'nowrap'}}>{t('use_preferred', lang)}</button>
+          <button className="btn" onClick={()=>setSelectedCamera(null)}>{t('use_preferred', lang)}</button>
         </div>
         <div ref={containerRef} style={{borderRadius:8,overflow:'hidden',background:'#000'}}>
           {/* Html5Qrcode will render camera preview inside this element */}
