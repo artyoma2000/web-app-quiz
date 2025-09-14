@@ -15,4 +15,7 @@ ENV PYTHONUNBUFFERED=1
 ENV CREATE_TABLES=1
 
 EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Launch script will decide whether to use SSL based on env vars
+COPY start-uvicorn.sh /start-uvicorn.sh
+RUN chmod +x /start-uvicorn.sh
+CMD ["/start-uvicorn.sh"]

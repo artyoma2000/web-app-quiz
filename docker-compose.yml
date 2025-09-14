@@ -16,6 +16,13 @@ services:
       context: ./backend
     volumes:
       - ./backend:/app
+      - ./certs:/certs:ro
+    
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    # SSL cert paths (optional)
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -23,18 +30,27 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_DB=copilot_test
       - CREATE_TABLES=1
-    depends_on:
-      - db
-    ports:
-      - "8000:8000"
+      - SSL_CERT_FILE=/certs/cert.pem
+      - SSL_KEY_FILE=/certs/key.pem
 
   frontend:
     build:
       context: ./frontend
     ports:
-      - "5173:80"
+      - "5173:443"
+      - "5174:80"
     depends_on:
       - backend
+    volumes:
+      - ./certs:/etc/nginx/certs:ro
+
+  mkcert:
+    image: alpine:latest
+    entrypoint: ["/bin/sh","/scripts/generate_certs.sh"]
+    volumes:
+      - ./certs:/certs
+      - ./scripts:/scripts:ro
+    tty: true
 
 volumes:
   db-data:

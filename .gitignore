@@ -32,6 +32,9 @@ docker-compose.*.yaml
 uploads/
 backend/uploads/
 
+# SSL certificates (local dev only)
+certs/
+
 # IDEs and editors
 .vscode/
 .idea/
